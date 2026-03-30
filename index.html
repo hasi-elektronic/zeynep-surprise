@@ -992,13 +992,12 @@
   </div>
 </section>
 
-<!-- ══════════════════════════ AFFIRMATIONS ══════════════════════════ -->
+<!-- 1 🇩🇪 ══════════════════════════ AFFIRMATIONS ══════════════════════════ -->
 <section id="affirmations">
   <div class="reveal">
     <p class="section-label">✦ Tägliche Kraft</p>
     <h2 class="section-title">Deine <span class="gold">Affirmation</span><br>für heute</h2>
     <div class="divider"></div>
-
     <div class="affirmation-wrapper" onclick="nextAffirmation()" role="button" aria-label="Nächste Affirmation">
       <div class="affirmation-card" id="aff-card">
         <span class="affirmation-icon" id="aff-icon">🌸</span>
@@ -1006,18 +1005,52 @@
         <p class="affirmation-hint">↩ tippen für eine neue</p>
       </div>
     </div>
-
     <div class="affirmation-dots" id="aff-dots"></div>
   </div>
 </section>
 
-<!-- ════════════════════════════ QUOTES ════════════════════════════ -->
+<!-- 2 🇬🇧 ══════════════════════ EN AFFIRMATIONS ══════════════════════ -->
+<section id="en-affirmations">
+  <div class="reveal">
+    <span class="lang-badge">🇬🇧 English</span>
+    <p class="section-label">✦ Power Words</p>
+    <h2 class="section-title">You are <span class="gold">more</span><br>than enough</h2>
+    <div class="divider"></div>
+    <div class="en-aff-grid">
+      <div class="en-aff-card">
+        <div class="en-aff-number">01</div>
+        <p class="en-aff-text">You don't need to have it all figured out. You just need to keep going.</p>
+      </div>
+      <div class="en-aff-card">
+        <div class="en-aff-number">02</div>
+        <p class="en-aff-text">Every version of you that got here — was strong enough.</p>
+      </div>
+      <div class="en-aff-card">
+        <div class="en-aff-number">03</div>
+        <p class="en-aff-text">Your potential is not a ceiling. It is a horizon that keeps expanding.</p>
+      </div>
+      <div class="en-aff-card">
+        <div class="en-aff-number">04</div>
+        <p class="en-aff-text">Hard days don't last. But the girl who survived them? She does.</p>
+      </div>
+      <div class="en-aff-card">
+        <div class="en-aff-number">05</div>
+        <p class="en-aff-text">You are not behind. You are exactly where your story needs you to be.</p>
+      </div>
+      <div class="en-aff-card">
+        <div class="en-aff-number">06</div>
+        <p class="en-aff-text">The world gets better when you show up as yourself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 🇩🇪 ════════════════════════════ QUOTES ════════════════════════════ -->
 <section id="quotes">
   <div class="reveal">
     <p class="section-label">✦ Weisheiten</p>
     <h2 class="section-title">Worte, die <span class="gold">tragen</span></h2>
     <div class="divider"></div>
-
     <div class="quotes-grid">
       <div class="quote-card">
         <p class="quote-text">Die Zukunft gehört denen, die an die Schönheit ihrer Träume glauben.</p>
@@ -1039,13 +1072,37 @@
   </div>
 </section>
 
-<!-- ══════════════════════════ CHECKLIST ══════════════════════════ -->
+<!-- 4 🇬🇧 ══════════════════════════ POEM ══════════════════════════ -->
+<section id="en-poem">
+  <div class="reveal">
+    <span class="lang-badge">🇬🇧 For You</span>
+    <p class="section-label">✦ A poem</p>
+    <h2 class="section-title">Written <span class="gold">for you</span></h2>
+    <div class="divider"></div>
+    <div class="poem-container" id="poem-container">
+      <p class="poem-title">— Zeynep —</p>
+      <p class="poem-line" data-delay="0">She carries constellations in her chest,</p>
+      <p class="poem-line" data-delay="200">a whole universe the world hasn't seen yet.</p>
+      <div class="poem-spacer"></div>
+      <p class="poem-line" data-delay="500">She doubts herself on Tuesday mornings,</p>
+      <p class="poem-line" data-delay="700">yet still shows up — that is her superpower.</p>
+      <div class="poem-spacer"></div>
+      <p class="poem-line bold-line" data-delay="1000">She is not waiting to become someone.</p>
+      <p class="poem-line bold-line" data-delay="1200">She already is.</p>
+      <div class="poem-spacer"></div>
+      <p class="poem-line" data-delay="1500">And somewhere, someone watches her grow</p>
+      <p class="poem-line" data-delay="1700">and thinks — quietly, fiercely —</p>
+      <p class="poem-line bold-line" data-delay="1900">that is my daughter. That is my pride.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5 🇩🇪 ══════════════════════════ CHECKLIST ══════════════════════════ -->
 <section id="checklist">
   <div class="reveal">
     <p class="section-label">✦ Heute schaffe ich</p>
     <h2 class="section-title">Kleine <span class="gold">Siege</span><br>zählen auch</h2>
     <div class="divider"></div>
-
     <div class="checklist-container">
       <div class="check-item" onclick="toggleCheck(this)" role="checkbox" aria-checked="false">
         <div class="check-box"><span class="check-checkmark">✓</span></div>
@@ -1086,117 +1143,13 @@
   </div>
 </section>
 
-<!-- ══════════════════════════ LETTER ══════════════════════════ -->
-<section id="letter">
-  <div class="reveal">
-    <p class="section-label">✦ Ein Geschenk</p>
-    <h2 class="section-title">Ein Brief <span class="gold">von Baba</span></h2>
-    <div class="divider"></div>
-
-    <div class="envelope-wrapper">
-      <div class="envelope" id="envelope" onclick="openEnvelope()">
-        <div class="envelope-flap"></div>
-        <div class="envelope-seal">💛</div>
-
-        <div class="envelope-preview">
-          <p class="envelope-label">Für Zeynep</p>
-          <p class="envelope-sublabel">mit Liebe versiegelt</p>
-        </div>
-
-        <div class="letter-content" id="letter-content">
-          <div class="letter-paper">
-            <p class="letter-date">Vaihingen, 2026</p>
-            <p class="letter-body">Liebe Zeynep,
-
-du bist der größte Stolz meines Lebens.
-
-Ich sehe täglich, wie hart du arbeitest und wie stark du geworden bist — stärker als du selbst weißt. Jeder Tag, an dem du aufstehst und weitermachst, macht mich so unglaublich stolz.
-
-Diese Seite habe ich für dich gemacht — damit du weißt: Du bist nie allein. Egal was kommt, egal wie schwer es gerade ist — ich bin immer da. Keine Frage, kein Zweifel.
-
-Du wirst deinen Weg gehen. Ich sehe es in dir.
-
-Alles Liebe,</p>
-            <span class="letter-sign">dein Baba 💛</span>
-          </div>
-        </div>
-      </div>
-      <p class="envelope-hint" id="env-hint">✦ tippen um zu öffnen ✦</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════ EN AFFIRMATIONS ══════════════════════ -->
-<section id="en-affirmations">
-  <div class="reveal">
-    <span class="lang-badge">🇬🇧 English</span>
-    <p class="section-label">✦ Power Words</p>
-    <h2 class="section-title">You are <span class="gold">more</span><br>than enough</h2>
-    <div class="divider"></div>
-
-    <div class="en-aff-grid">
-      <div class="en-aff-card">
-        <div class="en-aff-number">01</div>
-        <p class="en-aff-text">You don't need to have it all figured out. You just need to keep going.</p>
-      </div>
-      <div class="en-aff-card">
-        <div class="en-aff-number">02</div>
-        <p class="en-aff-text">Every version of you that got here — was strong enough.</p>
-      </div>
-      <div class="en-aff-card">
-        <div class="en-aff-number">03</div>
-        <p class="en-aff-text">Your potential is not a ceiling. It is a horizon that keeps expanding.</p>
-      </div>
-      <div class="en-aff-card">
-        <div class="en-aff-number">04</div>
-        <p class="en-aff-text">Hard days don't last. But the girl who survived them? She does.</p>
-      </div>
-      <div class="en-aff-card">
-        <div class="en-aff-number">05</div>
-        <p class="en-aff-text">You are not behind. You are exactly where your story needs you to be.</p>
-      </div>
-      <div class="en-aff-card">
-        <div class="en-aff-number">06</div>
-        <p class="en-aff-text">The world gets better when you show up as yourself.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════ POEM ══════════════════════════ -->
-<section id="en-poem">
-  <div class="reveal">
-    <span class="lang-badge">🇬🇧 For You</span>
-    <p class="section-label">✦ A poem</p>
-    <h2 class="section-title">Written <span class="gold">for you</span></h2>
-    <div class="divider"></div>
-
-    <div class="poem-container" id="poem-container">
-      <p class="poem-title">— Zeynep —</p>
-      <p class="poem-line" data-delay="0">She carries constellations in her chest,</p>
-      <p class="poem-line" data-delay="200">a whole universe the world hasn't seen yet.</p>
-      <div class="poem-spacer"></div>
-      <p class="poem-line" data-delay="500">She doubts herself on Tuesday mornings,</p>
-      <p class="poem-line" data-delay="700">yet still shows up — that is her superpower.</p>
-      <div class="poem-spacer"></div>
-      <p class="poem-line bold-line" data-delay="1000">She is not waiting to become someone.</p>
-      <p class="poem-line bold-line" data-delay="1200">She already is.</p>
-      <div class="poem-spacer"></div>
-      <p class="poem-line" data-delay="1500">And somewhere, someone watches her grow</p>
-      <p class="poem-line" data-delay="1700">and thinks — quietly, fiercely —</p>
-      <p class="poem-line bold-line" data-delay="1900">that is my daughter. That is my pride.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════ ABOUT YOU ══════════════════════════ -->
+<!-- 6 🇬🇧 ══════════════════════════ ABOUT YOU ══════════════════════════ -->
 <section id="about-you">
   <div class="reveal">
     <span class="lang-badge">🇬🇧 Identity</span>
     <p class="section-label">✦ Who You Are</p>
     <h2 class="section-title">This is <span class="gold">you</span>,<br>Zeynep</h2>
     <div class="divider"></div>
-
     <div class="about-grid" id="about-grid">
       <span class="about-tag tag-gold">Resilient</span>
       <span class="about-tag tag-rose">Thoughtful</span>
@@ -1218,16 +1171,14 @@ Alles Liebe,</p>
   </div>
 </section>
 
-<!-- ══════════════════════════ VISION BOARD ══════════════════════════ -->
+<!-- 7 🇬🇧 ══════════════════════════ VISION BOARD ══════════════════════════ -->
 <section id="vision">
   <div class="reveal">
     <span class="lang-badge">🇬🇧 Future</span>
     <p class="section-label">✦ Your Future</p>
     <h2 class="section-title">My future <span class="gold">looks like…</span></h2>
     <div class="divider"></div>
-
     <p class="vision-intro">Close your eyes for a second.<br>This is what's waiting for you.</p>
-
     <div class="vision-grid">
       <div class="vision-card">
         <span class="vision-icon">🎓</span>
@@ -1253,6 +1204,43 @@ Alles Liebe,</p>
         <p class="vision-dream">A life built on your own terms</p>
         <p class="vision-sub">Proud. Independent. Loved. Exactly as you are.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 🇩🇪 ══════════════════════════ LETTER ══════════════════════════ -->
+<section id="letter">
+  <div class="reveal">
+    <p class="section-label">✦ Ein Geschenk</p>
+    <h2 class="section-title">Ein Brief <span class="gold">von Baba</span></h2>
+    <div class="divider"></div>
+    <div class="envelope-wrapper">
+      <div class="envelope" id="envelope" onclick="openEnvelope()">
+        <div class="envelope-flap"></div>
+        <div class="envelope-seal">💛</div>
+        <div class="envelope-preview">
+          <p class="envelope-label">Für Zeynep</p>
+          <p class="envelope-sublabel">mit Liebe versiegelt</p>
+        </div>
+        <div class="letter-content" id="letter-content">
+          <div class="letter-paper">
+            <p class="letter-date">Vaihingen, 2026</p>
+            <p class="letter-body">Liebe Zeynep,
+
+du bist der größte Stolz meines Lebens.
+
+Ich sehe täglich, wie hart du arbeitest und wie stark du geworden bist — stärker als du selbst weißt. Jeder Tag, an dem du aufstehst und weitermachst, macht mich so unglaublich stolz.
+
+Diese Seite habe ich für dich gemacht — damit du weißt: Du bist nie allein. Egal was kommt, egal wie schwer es gerade ist — ich bin immer da. Keine Frage, kein Zweifel.
+
+Du wirst deinen Weg gehen. Ich sehe es in dir.
+
+Alles Liebe,</p>
+            <span class="letter-sign">dein Baba 💛</span>
+          </div>
+        </div>
+      </div>
+      <p class="envelope-hint" id="env-hint">✦ tippen um zu öffnen ✦</p>
     </div>
   </div>
 </section>
