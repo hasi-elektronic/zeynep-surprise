@@ -688,6 +688,275 @@
     transform: translateY(0);
   }
 
+  /* ─── LANGUAGE BADGE ─── */
+  .lang-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(244,197,66,0.1);
+    border: 1px solid rgba(244,197,66,0.25);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  /* ─── EN AFFIRMATIONS ─── */
+  #en-affirmations { text-align: center; }
+
+  .en-aff-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .en-aff-card {
+    background: linear-gradient(135deg, rgba(244,197,66,0.06), rgba(232,180,184,0.08));
+    border: 1px solid rgba(244,197,66,0.15);
+    border-radius: 18px;
+    padding: 28px 22px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+  }
+
+  .en-aff-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(244,197,66,0.4);
+    box-shadow: 0 16px 40px rgba(244,197,66,0.1);
+  }
+
+  .en-aff-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--rose), var(--gold));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+
+  .en-aff-card:hover::after { transform: scaleX(1); }
+
+  .en-aff-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: rgba(244,197,66,0.12);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .en-aff-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(0.95rem, 2.2vw, 1.12rem);
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  /* ─── POEM ─── */
+  #en-poem { text-align: center; }
+
+  .poem-container {
+    max-width: 560px;
+    margin: 0 auto;
+    background: linear-gradient(160deg, rgba(36,32,63,0.9), rgba(26,21,53,0.95));
+    border: 1px solid rgba(232,180,184,0.2);
+    border-radius: 28px;
+    padding: 56px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .poem-container::before {
+    content: '';
+    position: absolute;
+    top: -40px; left: -40px;
+    width: 160px; height: 160px;
+    background: radial-gradient(circle, rgba(244,197,66,0.08), transparent);
+    pointer-events: none;
+  }
+
+  .poem-container::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 160px; height: 160px;
+    background: radial-gradient(circle, rgba(232,180,184,0.08), transparent);
+    pointer-events: none;
+  }
+
+  .poem-title {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: var(--rose);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    opacity: 0.8;
+  }
+
+  .poem-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+    color: var(--cream);
+    line-height: 2;
+    font-weight: 300;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .poem-line.bold-line {
+    font-weight: 500;
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .poem-line.visible-line {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .poem-spacer { height: 20px; }
+
+  /* ─── ABOUT YOU ─── */
+  #about-you { text-align: center; }
+
+  .about-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .about-tag {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(0.95rem, 2.2vw, 1.12rem);
+    font-style: italic;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    cursor: default;
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  .about-tag.tag-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .about-tag:hover {
+    transform: scale(1.08) translateY(-2px);
+  }
+
+  .tag-gold {
+    background: rgba(244,197,66,0.1);
+    border: 1.5px solid rgba(244,197,66,0.3);
+    color: var(--gold);
+  }
+
+  .tag-rose {
+    background: rgba(232,180,184,0.1);
+    border: 1.5px solid rgba(232,180,184,0.3);
+    color: var(--rose);
+  }
+
+  .tag-cream {
+    background: rgba(254,243,226,0.06);
+    border: 1.5px solid rgba(254,243,226,0.2);
+    color: var(--cream);
+  }
+
+  /* ─── VISION BOARD ─── */
+  #vision { text-align: left; }
+
+  .vision-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2.3vw, 1.18rem);
+    font-style: italic;
+    color: rgba(254,243,226,0.65);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  .vision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .vision-card {
+    background: linear-gradient(135deg, rgba(36,32,63,0.7), rgba(20,17,42,0.9));
+    border-radius: 20px;
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+    transition: all 0.35s ease;
+  }
+
+  .vision-card:nth-child(1) { border-color: rgba(244,197,66,0.2); }
+  .vision-card:nth-child(2) { border-color: rgba(232,180,184,0.2); }
+  .vision-card:nth-child(3) { border-color: rgba(232,180,184,0.2); }
+  .vision-card:nth-child(4) { border-color: rgba(244,197,66,0.2); }
+
+  .vision-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.3);
+  }
+
+  .vision-card:nth-child(1):hover, .vision-card:nth-child(4):hover {
+    border-color: rgba(244,197,66,0.5);
+    box-shadow: 0 20px 48px rgba(244,197,66,0.08);
+  }
+
+  .vision-card:nth-child(2):hover, .vision-card:nth-child(3):hover {
+    border-color: rgba(232,180,184,0.5);
+    box-shadow: 0 20px 48px rgba(232,180,184,0.08);
+  }
+
+  .vision-icon {
+    font-size: 2rem;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .vision-category {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(254,243,226,0.35);
+    margin-bottom: 8px;
+  }
+
+  .vision-dream {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    color: var(--cream);
+    line-height: 1.35;
+    margin-bottom: 10px;
+  }
+
+  .vision-sub {
+    font-size: 0.78rem;
+    color: rgba(254,243,226,0.4);
+    line-height: 1.5;
+  }
+
   /* ─── RESPONSIVE ─── */
   @media (max-width: 480px) {
     section { padding: 60px 20px; }
@@ -695,6 +964,9 @@
     .checklist-container { padding: 28px 20px; }
     .letter-paper { padding: 28px 20px; }
     .envelope { padding: 50px 28px 40px; }
+    .en-aff-grid { grid-template-columns: 1fr; }
+    .vision-grid { grid-template-columns: 1fr; }
+    .poem-container { padding: 40px 24px; }
   }
 </style>
 </head>
@@ -854,6 +1126,137 @@ Alles Liebe,</p>
   </div>
 </section>
 
+<!-- ══════════════════════ EN AFFIRMATIONS ══════════════════════ -->
+<section id="en-affirmations">
+  <div class="reveal">
+    <span class="lang-badge">🇬🇧 English</span>
+    <p class="section-label">✦ Power Words</p>
+    <h2 class="section-title">You are <span class="gold">more</span><br>than enough</h2>
+    <div class="divider"></div>
+
+    <div class="en-aff-grid">
+      <div class="en-aff-card">
+        <div class="en-aff-number">01</div>
+        <p class="en-aff-text">You don't need to have it all figured out. You just need to keep going.</p>
+      </div>
+      <div class="en-aff-card">
+        <div class="en-aff-number">02</div>
+        <p class="en-aff-text">Every version of you that got here — was strong enough.</p>
+      </div>
+      <div class="en-aff-card">
+        <div class="en-aff-number">03</div>
+        <p class="en-aff-text">Your potential is not a ceiling. It is a horizon that keeps expanding.</p>
+      </div>
+      <div class="en-aff-card">
+        <div class="en-aff-number">04</div>
+        <p class="en-aff-text">Hard days don't last. But the girl who survived them? She does.</p>
+      </div>
+      <div class="en-aff-card">
+        <div class="en-aff-number">05</div>
+        <p class="en-aff-text">You are not behind. You are exactly where your story needs you to be.</p>
+      </div>
+      <div class="en-aff-card">
+        <div class="en-aff-number">06</div>
+        <p class="en-aff-text">The world gets better when you show up as yourself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ POEM ══════════════════════════ -->
+<section id="en-poem">
+  <div class="reveal">
+    <span class="lang-badge">🇬🇧 For You</span>
+    <p class="section-label">✦ A poem</p>
+    <h2 class="section-title">Written <span class="gold">for you</span></h2>
+    <div class="divider"></div>
+
+    <div class="poem-container" id="poem-container">
+      <p class="poem-title">— Zeynep —</p>
+      <p class="poem-line" data-delay="0">She carries constellations in her chest,</p>
+      <p class="poem-line" data-delay="200">a whole universe the world hasn't seen yet.</p>
+      <div class="poem-spacer"></div>
+      <p class="poem-line" data-delay="500">She doubts herself on Tuesday mornings,</p>
+      <p class="poem-line" data-delay="700">yet still shows up — that is her superpower.</p>
+      <div class="poem-spacer"></div>
+      <p class="poem-line bold-line" data-delay="1000">She is not waiting to become someone.</p>
+      <p class="poem-line bold-line" data-delay="1200">She already is.</p>
+      <div class="poem-spacer"></div>
+      <p class="poem-line" data-delay="1500">And somewhere, someone watches her grow</p>
+      <p class="poem-line" data-delay="1700">and thinks — quietly, fiercely —</p>
+      <p class="poem-line bold-line" data-delay="1900">that is my daughter. That is my pride.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ ABOUT YOU ══════════════════════════ -->
+<section id="about-you">
+  <div class="reveal">
+    <span class="lang-badge">🇬🇧 Identity</span>
+    <p class="section-label">✦ Who You Are</p>
+    <h2 class="section-title">This is <span class="gold">you</span>,<br>Zeynep</h2>
+    <div class="divider"></div>
+
+    <div class="about-grid" id="about-grid">
+      <span class="about-tag tag-gold">Resilient</span>
+      <span class="about-tag tag-rose">Thoughtful</span>
+      <span class="about-tag tag-cream">Ambitious</span>
+      <span class="about-tag tag-gold">Curious</span>
+      <span class="about-tag tag-rose">Empathetic</span>
+      <span class="about-tag tag-cream">Creative</span>
+      <span class="about-tag tag-gold">Brave</span>
+      <span class="about-tag tag-rose">Intelligent</span>
+      <span class="about-tag tag-cream">Compassionate</span>
+      <span class="about-tag tag-gold">Unstoppable</span>
+      <span class="about-tag tag-rose">Kind</span>
+      <span class="about-tag tag-cream">Determined</span>
+      <span class="about-tag tag-gold">Original</span>
+      <span class="about-tag tag-rose">Radiant</span>
+      <span class="about-tag tag-cream">Wise</span>
+      <span class="about-tag tag-gold">Worthy</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ VISION BOARD ══════════════════════════ -->
+<section id="vision">
+  <div class="reveal">
+    <span class="lang-badge">🇬🇧 Future</span>
+    <p class="section-label">✦ Your Future</p>
+    <h2 class="section-title">My future <span class="gold">looks like…</span></h2>
+    <div class="divider"></div>
+
+    <p class="vision-intro">Close your eyes for a second.<br>This is what's waiting for you.</p>
+
+    <div class="vision-grid">
+      <div class="vision-card">
+        <span class="vision-icon">🎓</span>
+        <p class="vision-category">Education</p>
+        <p class="vision-dream">A degree I earned with my own hands</p>
+        <p class="vision-sub">Every late night, every page, every exam — it was worth it.</p>
+      </div>
+      <div class="vision-card">
+        <span class="vision-icon">🌍</span>
+        <p class="vision-category">World</p>
+        <p class="vision-dream">Cities I haven't seen yet</p>
+        <p class="vision-sub">Places that will change the way you think and breathe.</p>
+      </div>
+      <div class="vision-card">
+        <span class="vision-icon">💼</span>
+        <p class="vision-category">Career</p>
+        <p class="vision-dream">Work that means something</p>
+        <p class="vision-sub">A path that you chose — not one that chose you by accident.</p>
+      </div>
+      <div class="vision-card">
+        <span class="vision-icon">🌸</span>
+        <p class="vision-category">Self</p>
+        <p class="vision-dream">A life built on your own terms</p>
+        <p class="vision-sub">Proud. Independent. Loved. Exactly as you are.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════════════════════ FOOTER ══════════════════════════ -->
 <footer>
   <p class="footer-text">Made with <span class="footer-heart">💛</span> by Baba<br>
@@ -976,7 +1379,37 @@ function toggleCheck(item) {
   item.setAttribute('aria-checked', item.classList.contains('done'));
 }
 
-/* ─── ENVELOPE ─── */
+/* ─── POEM ANIMATION ─── */
+const poemObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const lines = e.target.querySelectorAll('.poem-line');
+      lines.forEach(line => {
+        const delay = parseInt(line.dataset.delay || 0);
+        setTimeout(() => line.classList.add('visible-line'), delay + 200);
+      });
+      poemObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.25 });
+const poemEl = document.getElementById('poem-container');
+if (poemEl) poemObserver.observe(poemEl);
+
+/* ─── ABOUT TAGS STAGGER ─── */
+const tagObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const tags = e.target.querySelectorAll('.about-tag');
+      tags.forEach((tag, i) => {
+        setTimeout(() => tag.classList.add('tag-visible'), i * 70);
+      });
+      tagObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+const aboutGrid = document.getElementById('about-grid');
+if (aboutGrid) tagObserver.observe(aboutGrid);
+
 let opened = false;
 function openEnvelope() {
   if (opened) return;
