@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hey Zeynep ✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --midnight: #0f0c29;
+    --deep: #1a1535;
+    --mid: #24203f;
+    --cream: #fef3e2;
+    --cream-dim: #f5e6c8;
+    --rose: #e8b4b8;
+    --rose-deep: #c9848a;
+    --gold: #f4c542;
+    --gold-dim: #d4a520;
+    --gold-glow: rgba(244, 197, 66, 0.15);
+    --star: rgba(255,255,255,0.85);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--midnight);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ─── STAR CANVAS ─── */
+  #star-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── GLOBAL SECTION ─── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 80px 24px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+    max-width: 100%;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rose);
+    opacity: 0;
+    animation: fadeUp 1s ease 0.3s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(4rem, 12vw, 9rem);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--cream);
+    margin: 16px 0 8px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.6s forwards;
+    position: relative;
+    display: inline-block;
+  }
+
+  .hero-title .sparkle {
+    display: inline-block;
+    animation: spin-sparkle 4s linear infinite;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 3vw, 1.6rem);
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.9s forwards;
+    margin-bottom: 8px;
+  }
+
+  .hero-sub2 {
+    font-size: 0.85rem;
+    color: rgba(254,243,226,0.5);
+    letter-spacing: 0.1em;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.2s forwards;
+    margin-bottom: 48px;
+  }
+
+  .hero-scroll {
+    opacity: 0;
+    animation: fadeUp 1s ease 1.6s forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(254,243,226,0.35);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: pulse-line 2s ease-in-out infinite;
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 12px;
+    opacity: 0.8;
+  }
+
+  .section-title {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
+    color: var(--cream);
+    margin-bottom: 40px;
+    line-height: 1.1;
+  }
+
+  .section-title .gold { color: var(--gold); }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(to right, var(--gold), var(--rose));
+    border-radius: 2px;
+    margin: 0 auto 48px;
+  }
+
+  /* ─── AFFIRMATIONS ─── */
+  #affirmations { text-align: center; }
+
+  .affirmation-wrapper {
+    position: relative;
+    perspective: 1000px;
+    margin: 0 auto;
+    max-width: 520px;
+    cursor: pointer;
+  }
+
+  .affirmation-card {
+    background: linear-gradient(135deg, rgba(232,180,184,0.12), rgba(244,197,66,0.08));
+    border: 1px solid rgba(244,197,66,0.2);
+    border-radius: 24px;
+    padding: 52px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .affirmation-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 30%, rgba(244,197,66,0.08), transparent 60%);
+    pointer-events: none;
+  }
+
+  .affirmation-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(244,197,66,0.1), 0 0 0 1px rgba(244,197,66,0.3);
+  }
+
+  .affirmation-card.flipping {
+    animation: card-flip 0.5s ease;
+  }
+
+  .affirmation-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: block;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .affirmation-text {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1.7rem, 5vw, 2.4rem);
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.3;
+    margin-bottom: 28px;
+  }
+
+  .affirmation-hint {
+    font-size: 0.75rem;
+    color: rgba(244,197,66,0.5);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .affirmation-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .affirmation-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(244,197,66,0.2);
+    transition: all 0.3s ease;
+  }
+
+  .affirmation-dot.active {
+    background: var(--gold);
+    transform: scale(1.4);
+  }
+
+  /* ─── QUOTES ─── */
+  #quotes { text-align: left; }
+
+  .quotes-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .quote-card {
+    background: linear-gradient(135deg, rgba(36,32,63,0.8), rgba(26,21,53,0.9));
+    border: 1px solid rgba(232,180,184,0.15);
+    border-radius: 20px;
+    padding: 32px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .quote-card:nth-child(even) {
+    transform: rotate(0.5deg);
+  }
+
+  .quote-card:nth-child(odd) {
+    transform: rotate(-0.3deg);
+  }
+
+  .quote-card:hover {
+    transform: rotate(0deg) translateY(-4px) !important;
+    border-color: rgba(232,180,184,0.4);
+  }
+
+  .quote-card::before {
+    content: '\201C';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8rem;
+    line-height: 1;
+    color: rgba(244,197,66,0.06);
+    position: absolute;
+    top: -10px; left: 16px;
+    pointer-events: none;
+  }
+
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.65;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .quote-author {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rose);
+    opacity: 0.8;
+  }
+
+  /* ─── CHECKLIST ─── */
+  #checklist { text-align: left; }
+
+  .checklist-container {
+    background: linear-gradient(135deg, rgba(232,180,184,0.06), rgba(244,197,66,0.04));
+    border: 1px solid rgba(232,180,184,0.15);
+    border-radius: 24px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .check-item:last-child { border-bottom: none; }
+
+  .check-item.done .check-label {
+    opacity: 0.45;
+    text-decoration: line-through;
+    text-decoration-color: var(--gold);
+  }
+
+  .check-box {
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    border: 1.5px solid rgba(244,197,66,0.3);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin-top: 2px;
+  }
+
+  .check-item.done .check-box {
+    background: linear-gradient(135deg, var(--gold), var(--rose));
+    border-color: transparent;
+    animation: pop-check 0.4s ease;
+  }
+
+  .check-checkmark {
+    display: none;
+    color: var(--midnight);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .check-item.done .check-checkmark { display: block; }
+
+  .check-content { flex: 1; }
+
+  .check-label {
+    font-family: 'Caveat', cursive;
+    font-size: 1.4rem;
+    color: var(--cream);
+    line-height: 1.3;
+    transition: all 0.3s ease;
+  }
+
+  .check-sub {
+    font-size: 0.78rem;
+    color: rgba(254,243,226,0.4);
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── LETTER / ENVELOPE ─── */
+  #letter { text-align: center; }
+
+  .envelope-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+    cursor: pointer;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .envelope {
+    width: 100%;
+    background: linear-gradient(160deg, #2a1f4e, #1e1640);
+    border: 1.5px solid rgba(244,197,66,0.25);
+    border-radius: 16px;
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .envelope:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 64px rgba(244,197,66,0.12);
+  }
+
+  .envelope-flap {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 60%;
+    background: linear-gradient(160deg, #362660, #251b50);
+    clip-path: polygon(0 0, 100% 0, 50% 55%);
+    border-radius: 16px 16px 0 0;
+    transition: all 0.6s ease;
+    transform-origin: top center;
+    z-index: 2;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 16px;
+  }
+
+  .envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+    opacity: 0;
+  }
+
+  .envelope-seal {
+    width: 42px;
+    height: 42px;
+    background: radial-gradient(circle, var(--gold), var(--gold-dim));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    box-shadow: 0 0 20px rgba(244,197,66,0.5);
+    transition: all 0.5s ease;
+  }
+
+  .envelope.open .envelope-seal {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  .envelope-preview {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .envelope-label {
+    font-family: 'Caveat', cursive;
+    font-size: 1.3rem;
+    color: rgba(254,243,226,0.6);
+    margin-bottom: 4px;
+  }
+
+  .envelope-sublabel {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(244,197,66,0.4);
+  }
+
+  /* LETTER CONTENT */
+  .letter-content {
+    display: none;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.6s ease 0.5s;
+  }
+
+  .envelope.open .letter-content {
+    display: block;
+  }
+
+  .envelope.open.letter-visible .letter-content {
+    opacity: 1;
+  }
+
+  .envelope.open .envelope-preview {
+    display: none;
+  }
+
+  .letter-paper {
+    background: linear-gradient(160deg, #fef9f0, #fef3e2);
+    border-radius: 12px;
+    padding: 36px 32px;
+    position: relative;
+    z-index: 4;
+  }
+
+  .letter-paper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--rose), var(--gold));
+    border-radius: 12px 12px 0 0;
+  }
+
+  .letter-date {
+    font-family: 'Caveat', cursive;
+    font-size: 0.9rem;
+    color: rgba(15,12,41,0.4);
+    text-align: right;
+    margin-bottom: 20px;
+  }
+
+  .letter-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.08rem;
+    line-height: 1.85;
+    color: #2a1f3d;
+    white-space: pre-line;
+  }
+
+  .letter-sign {
+    font-family: 'Caveat', cursive;
+    font-size: 1.6rem;
+    color: var(--gold-dim);
+    margin-top: 24px;
+    display: block;
+  }
+
+  .envelope-hint {
+    margin-top: 20px;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(244,197,66,0.45);
+    animation: pulse-gentle 2.5s ease-in-out infinite;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    position: relative;
+    text-align: center;
+    padding: 64px 24px 80px;
+    z-index: 1;
+  }
+
+  .footer-text {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    color: rgba(254,243,226,0.35);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-heart {
+    display: inline-block;
+    animation: heartbeat 1.4s ease-in-out infinite;
+    color: var(--gold);
+  }
+
+  /* ─── FLOATING ORBS ─── */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .orb-1 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(232,180,184,0.4), transparent);
+    top: -100px; right: -100px;
+    animation: orb-drift1 18s ease-in-out infinite alternate;
+  }
+
+  .orb-2 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(244,197,66,0.2), transparent);
+    bottom: 10%; left: -150px;
+    animation: orb-drift2 22s ease-in-out infinite alternate;
+  }
+
+  .orb-3 {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(100,80,200,0.3), transparent);
+    top: 40%; right: 10%;
+    animation: orb-drift3 16s ease-in-out infinite alternate;
+  }
+
+  /* ─── SHOOTING STARS ─── */
+  .shooting-star {
+    position: fixed;
+    width: 2px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    transform-origin: top;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+  }
+
+  @keyframes spin-sparkle {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25%       { transform: rotate(15deg) scale(1.1); }
+    75%       { transform: rotate(-10deg) scale(0.95); }
+  }
+
+  @keyframes card-flip {
+    0%   { transform: rotateY(0deg) scale(1); }
+    50%  { transform: rotateY(90deg) scale(0.95); }
+    100% { transform: rotateY(0deg) scale(1); }
+  }
+
+  @keyframes pop-check {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes pulse-gentle {
+    0%, 100% { opacity: 0.45; }
+    50%       { opacity: 0.8; }
+  }
+
+  @keyframes pulse-line {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50%       { opacity: 0.8; transform: scaleY(0.85); }
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    30%       { transform: scale(1.25); }
+    60%       { transform: scale(1.1); }
+  }
+
+  @keyframes orb-drift1 {
+    from { transform: translate(0, 0); }
+    to   { transform: translate(-60px, 80px); }
+  }
+
+  @keyframes orb-drift2 {
+    from { transform: translate(0, 0); }
+    to   { transform: translate(80px, -60px); }
+  }
+
+  @keyframes orb-drift3 {
+    from { transform: translate(0, 0); }
+    to   { transform: translate(-40px, 60px); }
+  }
+
+  @keyframes shoot {
+    0%   { opacity: 0; transform: translateX(0) translateY(0) rotate(135deg); }
+    10%  { opacity: 1; }
+    90%  { opacity: 0.5; }
+    100% { opacity: 0; transform: translateX(-300px) translateY(300px) rotate(135deg); }
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 480px) {
+    section { padding: 60px 20px; }
+    .affirmation-card { padding: 40px 24px; }
+    .checklist-container { padding: 28px 20px; }
+    .letter-paper { padding: 28px 20px; }
+    .envelope { padding: 50px 28px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- BACKGROUND ORBS -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- STAR CANVAS -->
+<canvas id="star-canvas"></canvas>
+
+<!-- ══════════════════════════════ HERO ══════════════════════════════ -->
+<section id="hero">
+  <p class="hero-eyebrow">✦ nur für dich ✦</p>
+  <h1 class="hero-title">Hey Zeynep <span class="sparkle">✨</span></h1>
+  <p class="hero-subtitle">Diese Seite ist nur für dich.</p>
+  <p class="hero-sub2">Immer wenn du sie brauchst — sie ist hier.</p>
+  <div class="hero-scroll">
+    <span style="text-transform:uppercase;font-size:0.65rem;letter-spacing:0.2em;">nach unten scrollen</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ AFFIRMATIONS ══════════════════════════ -->
+<section id="affirmations">
+  <div class="reveal">
+    <p class="section-label">✦ Tägliche Kraft</p>
+    <h2 class="section-title">Deine <span class="gold">Affirmation</span><br>für heute</h2>
+    <div class="divider"></div>
+
+    <div class="affirmation-wrapper" onclick="nextAffirmation()" role="button" aria-label="Nächste Affirmation">
+      <div class="affirmation-card" id="aff-card">
+        <span class="affirmation-icon" id="aff-icon">🌸</span>
+        <p class="affirmation-text" id="aff-text">Du bist weiter als du denkst.</p>
+        <p class="affirmation-hint">↩ tippen für eine neue</p>
+      </div>
+    </div>
+
+    <div class="affirmation-dots" id="aff-dots"></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ QUOTES ════════════════════════════ -->
+<section id="quotes">
+  <div class="reveal">
+    <p class="section-label">✦ Weisheiten</p>
+    <h2 class="section-title">Worte, die <span class="gold">tragen</span></h2>
+    <div class="divider"></div>
+
+    <div class="quotes-grid">
+      <div class="quote-card">
+        <p class="quote-text">Die Zukunft gehört denen, die an die Schönheit ihrer Träume glauben.</p>
+        <span class="quote-author">— Eleanor Roosevelt</span>
+      </div>
+      <div class="quote-card">
+        <p class="quote-text">Stell dir vor, wer du sein könntest — und dann entscheide dich dafür.</p>
+        <span class="quote-author">— Jordan B. Peterson</span>
+      </div>
+      <div class="quote-card">
+        <p class="quote-text">You are braver than you believe, stronger than you seem, and smarter than you think.</p>
+        <span class="quote-author">— A.A. Milne</span>
+      </div>
+      <div class="quote-card">
+        <p class="quote-text">Sie dachte, sie könnte — also konnte sie es auch.</p>
+        <span class="quote-author">— Alter Spruch, für dich</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ CHECKLIST ══════════════════════════ -->
+<section id="checklist">
+  <div class="reveal">
+    <p class="section-label">✦ Heute schaffe ich</p>
+    <h2 class="section-title">Kleine <span class="gold">Siege</span><br>zählen auch</h2>
+    <div class="divider"></div>
+
+    <div class="checklist-container">
+      <div class="check-item" onclick="toggleCheck(this)" role="checkbox" aria-checked="false">
+        <div class="check-box"><span class="check-checkmark">✓</span></div>
+        <div class="check-content">
+          <p class="check-label">Einmal tief durchatmen 🌬️</p>
+          <p class="check-sub">Drei Sekunden ein, vier Sekunden aus. Du schaffst das.</p>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)" role="checkbox" aria-checked="false">
+        <div class="check-box"><span class="check-checkmark">✓</span></div>
+        <div class="check-content">
+          <p class="check-label">Etwas Schönes essen 🍊</p>
+          <p class="check-sub">Dein Körper verdient Fürsorge — heute und jeden Tag.</p>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)" role="checkbox" aria-checked="false">
+        <div class="check-box"><span class="check-checkmark">✓</span></div>
+        <div class="check-content">
+          <p class="check-label">Eine Sache für die Schule 📚</p>
+          <p class="check-sub">Nur eine. Schritt für Schritt — das reicht.</p>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)" role="checkbox" aria-checked="false">
+        <div class="check-box"><span class="check-checkmark">✓</span></div>
+        <div class="check-content">
+          <p class="check-label">Stolz auf dich sein ✨</p>
+          <p class="check-sub">Auch wenn heute schwer war — du bist hier. Das zählt.</p>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)" role="checkbox" aria-checked="false">
+        <div class="check-box"><span class="check-checkmark">✓</span></div>
+        <div class="check-content">
+          <p class="check-label">Jemanden anlächeln 🌷</p>
+          <p class="check-sub">Dein Lächeln verändert den Raum um dich herum.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ LETTER ══════════════════════════ -->
+<section id="letter">
+  <div class="reveal">
+    <p class="section-label">✦ Ein Geschenk</p>
+    <h2 class="section-title">Ein Brief <span class="gold">von Baba</span></h2>
+    <div class="divider"></div>
+
+    <div class="envelope-wrapper">
+      <div class="envelope" id="envelope" onclick="openEnvelope()">
+        <div class="envelope-flap"></div>
+        <div class="envelope-seal">💛</div>
+
+        <div class="envelope-preview">
+          <p class="envelope-label">Für Zeynep</p>
+          <p class="envelope-sublabel">mit Liebe versiegelt</p>
+        </div>
+
+        <div class="letter-content" id="letter-content">
+          <div class="letter-paper">
+            <p class="letter-date">Vaihingen, 2026</p>
+            <p class="letter-body">Liebe Zeynep,
+
+du bist der größte Stolz meines Lebens.
+
+Ich sehe täglich, wie hart du arbeitest und wie stark du geworden bist — stärker als du selbst weißt. Jeder Tag, an dem du aufstehst und weitermachst, macht mich so unglaublich stolz.
+
+Diese Seite habe ich für dich gemacht — damit du weißt: Du bist nie allein. Egal was kommt, egal wie schwer es gerade ist — ich bin immer da. Keine Frage, kein Zweifel.
+
+Du wirst deinen Weg gehen. Ich sehe es in dir.
+
+Alles Liebe,</p>
+            <span class="letter-sign">dein Baba 💛</span>
+          </div>
+        </div>
+      </div>
+      <p class="envelope-hint" id="env-hint">✦ tippen um zu öffnen ✦</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+<footer>
+  <p class="footer-text">Made with <span class="footer-heart">💛</span> by Baba<br>
+  <span style="font-size:0.75rem;opacity:0.5;font-family:'DM Sans',sans-serif;letter-spacing:0.1em;">✦ Diese Seite gehört nur dir ✦</span>
+  </p>
+</footer>
+
+<script>
+/* ─── STAR CANVAS ─── */
+(function() {
+  const canvas = document.getElementById('star-canvas');
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+  let W, H;
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function makeStar() {
+    return {
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.4 + 0.2,
+      a: Math.random(),
+      da: (Math.random() * 0.003 + 0.0005) * (Math.random() < 0.5 ? 1 : -1),
+      speed: Math.random() * 0.08 + 0.01
+    };
+  }
+
+  function init() {
+    resize();
+    stars = Array.from({ length: 220 }, makeStar);
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    stars.forEach(s => {
+      s.a += s.da;
+      if (s.a <= 0 || s.a >= 1) s.da *= -1;
+      s.y -= s.speed;
+      if (s.y < -4) { s.y = H + 4; s.x = Math.random() * W; }
+
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${s.a * 0.85})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  init();
+  draw();
+})();
+
+/* ─── SHOOTING STARS ─── */
+function shootingStar() {
+  const el = document.createElement('div');
+  el.className = 'shooting-star';
+  el.style.cssText = `
+    top: ${Math.random() * 40}vh;
+    left: ${40 + Math.random() * 50}vw;
+    opacity: 0;
+    animation: shoot ${1.2 + Math.random() * 0.8}s ease-out forwards;
+  `;
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 2500);
+}
+setInterval(shootingStar, 4500);
+setTimeout(shootingStar, 1000);
+
+/* ─── SCROLL REVEAL ─── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ─── AFFIRMATIONS ─── */
+const affirmations = [
+  { text: "Du bist weiter als du denkst.", icon: "🌸" },
+  { text: "Jeder Tag ist ein neuer Anfang.", icon: "🌅" },
+  { text: "Deine Stärke überrascht dich selbst.", icon: "⚡" },
+  { text: "Du schaffst das. Schritt für Schritt.", icon: "🌿" },
+  { text: "Sei stolz auf dich — du wächst jeden Tag.", icon: "🌱" },
+  { text: "Du bist genau richtig, so wie du bist.", icon: "💫" },
+  { text: "Dein bestes Kapitel wurde noch nicht geschrieben.", icon: "📖" },
+  { text: "Es ist okay, nicht alles auf einmal zu schaffen.", icon: "🕊️" },
+  { text: "Du verdienst alles Schöne, das kommt.", icon: "✨" },
+];
+
+let affIndex = 0;
+const dots = document.getElementById('aff-dots');
+affirmations.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'affirmation-dot' + (i === 0 ? ' active' : '');
+  dots.appendChild(d);
+});
+
+function nextAffirmation() {
+  affIndex = (affIndex + 1) % affirmations.length;
+  const card = document.getElementById('aff-card');
+  card.classList.add('flipping');
+  setTimeout(() => {
+    document.getElementById('aff-text').textContent = affirmations[affIndex].text;
+    document.getElementById('aff-icon').textContent = affirmations[affIndex].icon;
+    card.classList.remove('flipping');
+  }, 250);
+  document.querySelectorAll('.affirmation-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === affIndex);
+  });
+}
+
+/* ─── CHECKLIST ─── */
+function toggleCheck(item) {
+  item.classList.toggle('done');
+  item.setAttribute('aria-checked', item.classList.contains('done'));
+}
+
+/* ─── ENVELOPE ─── */
+let opened = false;
+function openEnvelope() {
+  if (opened) return;
+  opened = true;
+  const env = document.getElementById('envelope');
+  const hint = document.getElementById('env-hint');
+  hint.style.opacity = '0';
+  env.classList.add('open');
+  setTimeout(() => {
+    env.classList.add('letter-visible');
+  }, 500);
+}
+</script>
+</body>
+</html>
